@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { getCustomers, filterCustomersByRisk } from '@/lib/aurora-data';
+import { getCustomers } from '@/lib/aurora-data';
 import type { Customer } from '@/lib/aurora-data';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';

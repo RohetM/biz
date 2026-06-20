@@ -2,10 +2,16 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import dynamic from 'next/dynamic';
 import { Dashboard } from '@/components/dashboard';
 import { AIAssistant } from '@/components/ai-assistant';
 import { Button } from '@/components/ui/button';
 import { LayoutDashboard, Users, Brain, Home } from 'lucide-react';
+
+const CustomerTable = dynamic(() => import('@/components/customer-table').then((mod) => mod.CustomerTable), {
+  loading: () => <div className="h-48 flex items-center justify-center text-slate-400">Loading customer database...</div>,
+  ssr: false,
+});
 
 export default function DashboardPage() {
   const [activeTab, setActiveTab] = useState('overview');
@@ -110,7 +116,7 @@ export default function DashboardPage() {
                 </div>
                 <div className="rounded-xl bg-slate-800/50 border border-slate-700 p-6">
                   {/* Lazy load the customer table only when needed */}
-                  <CustomerTableLazy />
+                  <CustomerTable />
                 </div>
               </div>
             )}
@@ -119,9 +125,4 @@ export default function DashboardPage() {
       </div>
     </div>
   );
-}
-
-function CustomerTableLazy() {
-  const { CustomerTable } = require('@/components/customer-table');
-  return <CustomerTable />;
 }

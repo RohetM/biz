@@ -5,10 +5,28 @@ import { getRevenueData, getCustomerGrowthData, getBusinessMetrics } from '@/lib
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { TrendingUp, Users, Zap, Activity } from 'lucide-react';
 
+interface MetricItem {
+  label: string;
+  value: string;
+  trend: string;
+  icon: typeof TrendingUp;
+  positive: boolean;
+}
+
+interface RevenueItem {
+  month: string;
+  value: number;
+}
+
+interface CustomerGrowthItem {
+  month: string;
+  value: number;
+}
+
 export function Dashboard() {
-  const [metrics, setMetrics] = useState<any[]>([]);
-  const [revenueData, setRevenueData] = useState<any[]>([]);
-  const [customerGrowthData, setCustomerGrowthData] = useState<any[]>([]);
+  const [metrics, setMetrics] = useState<MetricItem[]>([]);
+  const [revenueData, setRevenueData] = useState<RevenueItem[]>([]);
+  const [customerGrowthData, setCustomerGrowthData] = useState<CustomerGrowthItem[]>([]);
 
   useEffect(() => {
     async function loadData() {

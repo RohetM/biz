@@ -30,7 +30,7 @@ export function AIAssistant() {
 
   const handleNextInsight = () => {
     if (!currentInsight) return;
-    const currentIndex = insights.findIndex((i) => i.message === currentInsight.message);
+    const currentIndex = insights.findIndex((i) => i.recommendation === currentInsight.recommendation);
     const nextIndex = (currentIndex + 1) % insights.length;
     setCurrentInsight(insights[nextIndex]);
   };
@@ -76,7 +76,7 @@ export function AIAssistant() {
         </span>
       </div>
 
-      <p className="text-slate-300 mb-6 leading-relaxed">{currentInsight.message}</p>
+      <p className="text-slate-300 mb-6 leading-relaxed">{currentInsight.recommendation}</p>
 
       <div className="flex gap-3">
         <Button
