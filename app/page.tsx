@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { BarChart3, Users, Lightbulb, ArrowRight, Database, Cloud, Server } from 'lucide-react';
+import { BarChart3, Users, Lightbulb, ArrowRight, Database, Cloud, Server, User, Globe, Laptop, Cpu, Layers } from 'lucide-react';
 
 export default function Page() {
   return (
@@ -93,96 +93,146 @@ export default function Page() {
         </div>
       </section>
 
-      {/* AWS Architecture Section */}
-      <section className="relative py-20 border-t border-slate-700/50 bg-gradient-to-b from-transparent to-slate-900/20">
-        <div className="max-w-6xl mx-auto px-6 space-y-12">
+      {/* Production Architecture Section */}
+      <section className="relative py-20 border-t border-slate-700/50 bg-gradient-to-b from-transparent to-slate-900/40">
+        <div className="max-w-4xl mx-auto px-6 space-y-12">
           <div className="text-center space-y-4">
-            <h2 className="text-3xl md:text-4xl font-bold">Production-Ready Architecture</h2>
-            <p className="text-slate-400">Scalable infrastructure built on AWS for enterprise reliability</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white">Production Architecture</h2>
+            <p className="text-slate-400 max-w-lg mx-auto">
+              Scalable, high-performance hybrid infrastructure leveraging Vercel Edge and AWS cloud services.
+            </p>
           </div>
 
-          <div className="bg-slate-800/50 border border-slate-700 rounded-lg p-8">
-            <div className="space-y-8">
-              {/* Architecture Flow */}
-              <div className="space-y-6">
-                {[
-                  {
-                    layer: 'Frontend',
-                    tech: 'Vercel v0 + Next.js App Router',
-                    icon: Cloud,
-                    description: 'Global edge network with automatic deployments',
-                  },
-                  {
-                    layer: 'API Layer',
-                    tech: 'Next.js API Routes',
-                    icon: Server,
-                    description: 'Serverless functions for business logic',
-                  },
-                  {
-                    layer: 'Database',
-                    tech: 'Amazon Aurora PostgreSQL',
-                    icon: Database,
-                    description: 'Multi-AZ relational database with automatic failover',
-                  },
-                ].map((item, index) => {
-                  const Icon = item.icon;
-                  return (
-                    <div key={index}>
-                      <div className="flex items-start gap-4">
-                        <div className="p-3 bg-blue-500/10 rounded-lg mt-1">
-                          <Icon className="w-6 h-6 text-blue-400" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-baseline gap-2 mb-1">
-                            <h4 className="font-semibold text-white">{item.layer}</h4>
-                            <span className="text-xs text-blue-400 bg-blue-500/10 px-2 py-1 rounded">
-                              {item.tech}
-                            </span>
-                          </div>
-                          <p className="text-slate-400 text-sm">{item.description}</p>
-                        </div>
-                      </div>
-                      {index < 2 && (
-                        <div className="ml-8 mt-4 mb-4 h-8 border-l border-slate-600 flex justify-center">
-                          <span className="text-slate-500">↓</span>
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
+          <div className="relative flex flex-col items-center">
+            {/* Step 1: Business User */}
+            <div className="w-full max-w-xl bg-slate-800/50 border border-slate-700 hover:border-blue-500/30 hover:bg-slate-800/80 transition-all rounded-xl p-5 shadow-lg">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-blue-500/10 rounded-lg text-blue-400">
+                  <User className="w-6 h-6" />
+                </div>
+                <div className="text-left">
+                  <h3 className="font-semibold text-white text-base">Business User</h3>
+                  <p className="text-slate-400 text-sm">Accesses analytics dashboard and AI recommendations</p>
+                </div>
               </div>
+            </div>
 
-              {/* Data Sources */}
-              <div className="pt-6 border-t border-slate-700">
-                <h4 className="text-sm font-semibold text-slate-300 mb-3">Data & Capabilities</h4>
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-3">
-                  {['Customer Data', 'Orders & Transactions', 'Analytics', 'AI Insights'].map((item) => (
+            {/* Connector */}
+            <div className="my-3 flex flex-col items-center">
+              <div className="w-0.5 h-8 bg-gradient-to-b from-blue-500 to-indigo-500"></div>
+              <span className="text-indigo-400 text-xs -mt-1">▼</span>
+            </div>
+
+            {/* Step 2: Vercel Edge Network */}
+            <div className="w-full max-w-xl bg-slate-800/50 border border-slate-700 hover:border-indigo-500/30 hover:bg-slate-800/80 transition-all rounded-xl p-5 shadow-lg">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-indigo-500/10 rounded-lg text-indigo-400">
+                  <Globe className="w-6 h-6" />
+                </div>
+                <div className="text-left">
+                  <h3 className="font-semibold text-white text-base">Vercel Edge Network</h3>
+                  <p className="text-slate-400 text-sm">Global CDN routing traffic to the closest edge servers</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Connector */}
+            <div className="my-3 flex flex-col items-center">
+              <div className="w-0.5 h-8 bg-gradient-to-b from-indigo-500 to-purple-500"></div>
+              <span className="text-purple-400 text-xs -mt-1">▼</span>
+            </div>
+
+            {/* Step 3: Next.js Application (Vercel v0) */}
+            <div className="w-full max-w-xl bg-slate-800/50 border border-slate-700 hover:border-purple-500/30 hover:bg-slate-800/80 transition-all rounded-xl p-5 shadow-lg">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-purple-500/10 rounded-lg text-purple-400">
+                  <Laptop className="w-6 h-6" />
+                </div>
+                <div className="text-left">
+                  <h3 className="font-semibold text-white text-base">Next.js Application (Vercel v0)</h3>
+                  <p className="text-slate-400 text-sm">Highly optimized UI built with AI-assisted design components</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Connector */}
+            <div className="my-3 flex flex-col items-center">
+              <div className="w-0.5 h-8 bg-gradient-to-b from-purple-500 to-pink-500"></div>
+              <span className="text-pink-400 text-xs -mt-1">▼</span>
+            </div>
+
+            {/* Step 4: Next.js API Routes */}
+            <div className="w-full max-w-xl bg-slate-800/50 border border-slate-700 hover:border-pink-500/30 hover:bg-slate-800/80 transition-all rounded-xl p-5 shadow-lg">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-pink-500/10 rounded-lg text-pink-400">
+                  <Cpu className="w-6 h-6" />
+                </div>
+                <div className="text-left">
+                  <h3 className="font-semibold text-white text-base">Next.js API Routes</h3>
+                  <p className="text-slate-400 text-sm">Serverless backend routes processing queries and request logic</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Connector */}
+            <div className="my-3 flex flex-col items-center">
+              <div className="w-0.5 h-8 bg-gradient-to-b from-pink-500 to-amber-500"></div>
+              <span className="text-amber-400 text-xs -mt-1">▼</span>
+            </div>
+
+            {/* Step 5: Amazon Aurora PostgreSQL */}
+            <div className="w-full max-w-xl bg-slate-800/50 border border-slate-700 hover:border-amber-500/30 hover:bg-slate-800/80 transition-all rounded-xl p-5 shadow-lg">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-amber-500/10 rounded-lg text-amber-400">
+                  <Database className="w-6 h-6" />
+                </div>
+                <div className="text-left">
+                  <h3 className="font-semibold text-white text-base">Database: Amazon Aurora PostgreSQL</h3>
+                  <p className="text-slate-400 text-sm">Scalable enterprise-grade database cluster for data persistence</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Connector */}
+            <div className="my-3 flex flex-col items-center">
+              <div className="w-0.5 h-8 bg-gradient-to-b from-amber-500 to-emerald-500"></div>
+              <span className="text-emerald-400 text-xs -mt-1">▼</span>
+            </div>
+
+            {/* Step 6: Business Data Layer */}
+            <div className="w-full max-w-xl bg-slate-800/50 border border-slate-700 hover:border-emerald-500/30 hover:bg-slate-800/80 transition-all rounded-xl p-6 shadow-lg">
+              <div className="space-y-4">
+                <div className="flex items-center gap-4 border-b border-slate-700/50 pb-3 text-left">
+                  <div className="p-3 bg-emerald-500/10 rounded-lg text-emerald-400">
+                    <Layers className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-white text-base">Business Data Layer</h3>
+                    <p className="text-slate-400 text-sm">Structured schemas holding the application dataset</p>
+                  </div>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-1">
+                  {[
+                    { name: 'Customers', desc: 'CRM & risk profiles' },
+                    { name: 'Orders', desc: 'Sales & transactions' },
+                    { name: 'Products', desc: 'Inventory tracking' },
+                    { name: 'AI Insights', desc: 'Optimization data' },
+                  ].map((subItem) => (
                     <div
-                      key={item}
-                      className="bg-slate-700/50 rounded p-3 text-sm text-slate-300 text-center"
+                      key={subItem.name}
+                      className="bg-slate-900/50 border border-slate-700/50 rounded-lg p-3 text-center hover:bg-slate-950/40 transition-all"
                     >
-                      {item}
+                      <div className="font-medium text-emerald-400 text-sm mb-0.5">{subItem.name}</div>
+                      <div className="text-slate-500 text-xs">{subItem.desc}</div>
                     </div>
                   ))}
                 </div>
               </div>
             </div>
           </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {[
-              { title: 'Automatic Failover', desc: 'Multi-AZ Aurora ensures business continuity' },
-              { title: 'Read Replicas', desc: 'Optimize analytics queries with dedicated read instances' },
-              { title: 'Auto Scaling', desc: 'Performance Insights for monitoring and optimization' },
-            ].map((benefit, idx) => (
-              <div key={idx} className="bg-slate-800/50 border border-slate-700 rounded p-4">
-                <h4 className="font-semibold text-white mb-2">{benefit.title}</h4>
-                <p className="text-sm text-slate-400">{benefit.desc}</p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
+
 
       {/* CTA Section */}
       <section className="relative py-20 border-t border-slate-700/50">
